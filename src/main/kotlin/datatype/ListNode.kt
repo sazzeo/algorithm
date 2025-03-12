@@ -1,7 +1,7 @@
 package datatype
 
 class ListNode private constructor(
-    val value: Int = Int.MAX_VALUE,
+    val `val`: Int = Int.MAX_VALUE,
     var next: ListNode? = null,
 ) {
     companion object {
@@ -23,20 +23,20 @@ class ListNode private constructor(
 
         other as ListNode
 
-        if (value != other.value) return false
+        if (`val` != other.`val`) return false
         if (next != other.next) return false
 
         return true
     }
 
     override fun hashCode(): Int {
-        var result = value
+        var result = `val`
         result = 31 * result + (next?.hashCode() ?: 0)
         return result
     }
 
     override fun toString(): String {
-        return "ListNode(value=$value, next=$next)"
+        return "ListNode(value=$`val`, next=$next)"
     }
 
 

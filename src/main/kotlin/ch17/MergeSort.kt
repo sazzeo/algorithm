@@ -12,7 +12,7 @@ class MergeSort {
         if (node2 == null) return node1
 
         //swap 하기
-        if (node1.value > node2.value) {
+        if (node1.`val` > node2.`val`) {
             node1 = node2.also { node2 = node1 }
         }
         node1.next = mergeTwoSort(node1.next, node2)

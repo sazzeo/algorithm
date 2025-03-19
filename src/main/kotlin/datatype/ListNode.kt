@@ -1,7 +1,7 @@
 package datatype
 
-class ListNode private constructor(
-    var `val`: Int = Int.MIN_VALUE,
+class ListNode(
+    val `val`: Int = Int.MIN_VALUE,
     var next: ListNode? = null,
 ) {
     companion object {
@@ -35,7 +35,7 @@ class ListNode private constructor(
     }
 
     override fun toString(): String {
-        return "ListNode(value=$`val`, next=$next)"
+        return "$`val` -> $next"
     }
 
 

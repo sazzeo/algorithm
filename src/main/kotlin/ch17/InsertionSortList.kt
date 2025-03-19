@@ -3,26 +3,31 @@ package ch17
 import datatype.ListNode
 
 class InsertionSortList {
+
     fun solution1(head: ListNode?): ListNode? {
-        //비교할 노드
-        var node = head
-        val parent = ListNode.createList()
+        head?.next ?: return null
+
+        var current = head // 5 -> 2 -> 7 -> 1 -> null
+
+        val orderedListDummyHead = ListNode() // -100 -> null
         //정렬을 끝낸 대상을 가리키는 포인터
-        var p = node
-        while (node != null) {
-            while (p?.next != null && p.next!!.`val` < node.`val`) {
-                p = p.next
+        var prev = orderedListDummyHead // -100 -> null
+        while (current != null) {
+            while (prev.next != null && prev.next!!.`val` < current.`val`) {
+                prev = prev.next!!
             }
-            val pNext = p!!.next
-            val headNext = node.next
-            p.next = node
-            node.next = pNext
-            node = headNext
-            if (node != null && p.`val` > node.`val`) {
-                p = parent
+
+            val headNext = current.next
+            current.next = prev.next
+            prev.next = current
+            current = headNext
+
+            //최적화를 위한 코드
+            if (current != null && prev.`val` > current.`val`) {
+                prev = orderedListDummyHead
             }
         }
 
-        return parent.next
+        return orderedListDummyHead.next
     }
 }

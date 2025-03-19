@@ -1,11 +1,12 @@
 package datatype
 
 class ListNode private constructor(
-    val `val`: Int = Int.MAX_VALUE,
+    var `val`: Int = Int.MIN_VALUE,
     var next: ListNode? = null,
 ) {
     companion object {
         fun createList(vararg values: Int): ListNode {
+            if (values.isEmpty()) return ListNode()
             val head = ListNode(values[0])
             var prev = head
 
@@ -24,9 +25,7 @@ class ListNode private constructor(
         other as ListNode
 
         if (`val` != other.`val`) return false
-        if (next != other.next) return false
-
-        return true
+        return next == other.next
     }
 
     override fun hashCode(): Int {

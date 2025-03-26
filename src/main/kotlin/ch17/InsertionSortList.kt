@@ -2,6 +2,7 @@ package ch17
 
 import datatype.ListNode
 
+// 66번
 class InsertionSortList {
 
     fun solution1(head: ListNode?): ListNode? {

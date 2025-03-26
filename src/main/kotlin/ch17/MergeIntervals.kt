@@ -1,5 +1,6 @@
 package ch17
 
+// 65번
 //겹치는 구간을 병합하라
 class MergeIntervals {
 

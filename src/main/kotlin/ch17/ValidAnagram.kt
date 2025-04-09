@@ -13,7 +13,7 @@ class ValidAnagram {
         sArr.sort()
         val tArr = t.toCharArray()
         tArr.sort()
-        for (i in 0..<s.length) {
+        for (i in s.indices) {
             if (sArr[i] != tArr[i]) {
                 return false
             }

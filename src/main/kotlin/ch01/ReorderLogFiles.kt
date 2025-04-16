@@ -49,11 +49,40 @@ class ReorderLogFiles {
             val log1 = o1.split(" ", limit = 2)
             val log2 = o2.split(" ", limit = 2)
             val res = log1[1].compareTo(log2[1])
-            if(res == 0) log1[0].compareTo(log2[0]) else res
+            if (res == 0) log1[0].compareTo(log2[0]) else res
         }
 
         return (letters + numbers).toTypedArray()
     }
+
+    fun reorderLogFiles3(logs: Array<String>): Array<String> {
+
+        //얘가 있으면 성능이 느려짐..왜??
+//        if (logs.size == 1) {
+//            return logs
+//        }
+
+        val a = logs.toMutableList()
+            a.sortWith { o1, o2 ->
+            val log1 = o1.split(" ", limit = 2)
+            val log2 = o2.split(" ", limit = 2)
+            val log1First = Character.isDigit(log1[1][0])
+            val log2First = Character.isDigit(log2[1][0])
+            if (log1First && log2First) {
+                0
+            } else if (!log1First && !log2First) {
+                log1[0].compareTo(log2[0])
+            } else if (!log1First) {
+                1
+            } else {
+                -1
+            }
+
+        }
+
+        return a.toTypedArray()
+    }
+
 }
 
 data class Log(

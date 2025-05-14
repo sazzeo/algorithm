@@ -2,21 +2,26 @@ package ch01
 
 object LongestPalindromicSubstring {
 
+
+    //https://leetcode.com/problems/longest-palindromic-substring/
+    //66ms
     fun longestPalindrome(s: String): String {
         if (s.length == 1) {
             return s
         }
         if (s.length == 2) {
-            if (s[0] == s[1]) {
-                return s
+            return if (s[0] == s[1]) {
+                s
             } else {
-                return s[0].toString()
+                s[0].toString()
             }
         }
 
         val oneRes = findStr(s, 1)
         val twoRes = findStr(s, 2)
-
+        if (oneRes.isEmpty() && twoRes.isEmpty()) {
+            return s[0].toString()
+        }
         return if (oneRes.length > twoRes.length) oneRes else twoRes
     }
 
@@ -24,6 +29,7 @@ object LongestPalindromicSubstring {
         var p1 = 0
         var p2 = window
         var res = ""
+        var firstP1 = 0
         while (p2 < s.length) {
             if (s[p1] == s[p2]) {
                 val str = s.substring(p1, p2 + 1)
@@ -34,10 +40,7 @@ object LongestPalindromicSubstring {
                     if (p2 == s.length - 1) {
                         break
                     }
-                    p1 = p2 / 2
-                    if(p1 == 0) {
-                        p1++
-                    }
+                    p1 = firstP1++ + 1
                     p2 = p1 + window
                 } else {
                     p1--
@@ -45,7 +48,7 @@ object LongestPalindromicSubstring {
                 }
             } else {
                 if (p2 - p1 != window) {
-                    p1 = (p1 + p2) / 2 + 1
+                    p1 = firstP1++ + 1
                     p2 = p1 + window
                 }
                 p1++

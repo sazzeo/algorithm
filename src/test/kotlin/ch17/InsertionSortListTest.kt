@@ -9,9 +9,9 @@ class InsertionSortListTest : StringSpec({
 
     "솔루션1" {
         val res = insertionSortList.solution1(
-            ListNode.createList(5, 2, 3, 7, 1)
+            ListNode.createNode(5, 2, 3, 7, 1)
         )
-        res shouldBe ListNode.createList(1, 2, 3, 5, 7)
+        res shouldBe ListNode.createNode(1, 2, 3, 5, 7)
 
     }
 })

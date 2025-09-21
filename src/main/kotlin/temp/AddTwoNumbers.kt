@@ -5,7 +5,7 @@ import datatype.ListNode
 //100자리 숫자는 표현이 안됨
 object AddTwoNumbers {
     fun addTwoNumbers(l1: ListNode, l2: ListNode): ListNode {
-        var result = ListNode.createList()
+        var result = ListNode.createNode()
         var nextSum = 0;
         var l1Node: ListNode? = l1
         var l2Node: ListNode? = l2
@@ -29,7 +29,7 @@ object AddTwoNumbers {
                 break
             }
 
-            resultNode.next = ListNode.createList()
+            resultNode.next = ListNode.createNode()
             resultNode = resultNode.next!!
         }
 

@@ -1,11 +1,11 @@
 package datatype
 
 class ListNode(
-    val `val`: Int = Int.MIN_VALUE,
+    var `val`: Int = Int.MIN_VALUE,
     var next: ListNode? = null,
 ) {
     companion object {
-        fun createList(vararg values: Int): ListNode {
+        fun createNode(vararg values: Int): ListNode {
             if (values.isEmpty()) return ListNode()
             val head = ListNode(values[0])
             var prev = head
